@@ -8,12 +8,14 @@ import CompleteFormModal from '../components/order/form-modal'
 import { completeCurrentOrder, getCart } from '../data/orders'
 import { getPaymentTypes } from '../data/payment-types'
 import { removeProductFromOrder } from '../data/products'
+import { useAppContext } from '../context/state.js'
 
 export default function Cart() {
   const [cart, setCart] = useState({})
   const [paymentTypes, setPaymentTypes] = useState([])
   const [showCompleteForm, setShowCompleteForm] = useState(false)
   const router = useRouter()
+  const {profile} = useAppContext()
 
   const refresh = () => {
     getCart().then(cartData => {
@@ -25,12 +27,13 @@ export default function Cart() {
 
   useEffect(() => {
     refresh()
-    getPaymentTypes().then(paymentData => {
+    debugger
+    getPaymentTypes(profile.id).then(paymentData => {
       if (paymentData) {
         setPaymentTypes(paymentData)
       }
     })
-  }, [])
+  }, [profile])
 
   const completeOrder = (paymentTypeId) => {
     completeCurrentOrder(cart.id, paymentTypeId).then(() => router.push('/my-orders'))
