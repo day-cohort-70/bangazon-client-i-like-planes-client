@@ -6,12 +6,14 @@ import Navbar from '../components/navbar'
 import AddPaymentModal from '../components/payments/payment-modal'
 import Table from '../components/table'
 import { addPaymentType, getPaymentTypes, deletePaymentType } from '../data/payment-types'
+import { useAppContext } from '../context/state.js'
 
 export default function Payments() {
-  const headers = ['Merchant Name', 'Card Number', '']
+  const headers = ['Merchant Name', 'Card Number', 'Expiration Date']
   const [payments, setPayments] = useState([])
   const [showModal, setShowModal] = useState(false)
-  const refresh = () => getPaymentTypes().then((data) => {
+  const {profile} = useAppContext()
+  const refresh = () => getPaymentTypes(profile.id).then((data) => {
     if (data) {
       setPayments(data)
     }
@@ -19,7 +21,7 @@ export default function Payments() {
 
   useEffect(() => {
     refresh()
-  }, [])
+  }, [profile])
 
   const addNewPayment = (payment) => {
     addPaymentType(payment).then(() => {
@@ -43,7 +45,8 @@ export default function Payments() {
             payments.map(payment => (
               <tr key={payment.id}>
                 <td>{payment.merchant_name}</td>
-                <td>{payment.obscured_num}</td>
+                <td>{payment.account_number}</td>
+                <td>{payment.expiration_date}</td>
                 <td>
                   <span className="icon is-clickable" onClick={() => removePayment(payment.id)}>
                     <i className="fas fa-trash"></i>

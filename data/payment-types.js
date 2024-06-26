@@ -2,8 +2,6 @@ import { fetchWithResponse, fetchWithoutResponse } from "./fetcher";
 
 
 // this now only gets payments by customer
-
-// TODO: add customer to URL
 export function getPaymentTypes(customerId) {
   return fetchWithResponse(`paymenttypes?customer=${customerId}`, {
     headers: {
