@@ -23,7 +23,6 @@ export default function Orders() {
         <Table headers={headers}>
           {
             orders
-              .filter(order => order.payment_type)
               .map((order) => (
                 <tr key={order.id}>
                   <td>{order.created_date}</td>
