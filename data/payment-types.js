@@ -1,15 +1,16 @@
 import { fetchWithResponse, fetchWithoutResponse } from "./fetcher";
 
-export function getPaymentTypes() {
-  return fetchWithResponse('payment-types', {
+
+// this now only gets payments by customer
+export function getPaymentTypes(customerId) {
+  return fetchWithResponse(`paymenttypes?customer=${customerId}`, {
     headers: {
       Authorization: `Token ${localStorage.getItem('token')}`
     }
   })
 }
-
 export function addPaymentType(paymentType) {
-  return fetchWithResponse(`payment-types`, {
+  return fetchWithResponse(`paymenttypes`, {
     method: 'POST',
     headers: {
       Authorization: `Token ${localStorage.getItem('token')}`,
@@ -20,7 +21,7 @@ export function addPaymentType(paymentType) {
 }
 
 export function deletePaymentType(id) {
-  return fetchWithoutResponse(`payment-types/${id}`, {
+  return fetchWithoutResponse(`paymenttypes/${id}`, {
     method: 'DELETE',
     headers: {
       Authorization: `Token ${localStorage.getItem('token')}`

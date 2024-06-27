@@ -3,6 +3,8 @@ import Modal from "../modal"
 
 export default function CompleteFormModal({ showModal, setShowModal, paymentTypes, completeOrder }) {
   const [selectedPayment, setSelectedPayment] = useState(0)
+  
+
   return (
     <Modal showModal={showModal} setShowModal={setShowModal} title="Complete Order">
       <div className="select">
