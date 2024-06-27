@@ -22,13 +22,15 @@ export default function Orders() {
       <CardLayout title="Your Orders">
         <Table headers={headers}>
           {
-            orders.map((order) => (
-              <tr key={order.id}>
-                <td>{order.created_date}</td>
-                <td>${order.total_price}</td>
-                <td>{order.payment_type?.obscured_num}</td>
-              </tr>
-            ))
+            orders
+              .filter(order => order.payment_type)
+              .map((order) => (
+                <tr key={order.id}>
+                  <td>{order.created_date}</td>
+                  <td>${order.total_price}</td>
+                  <td>{order.payment_type?.merchant_name}</td>
+                </tr>
+              ))
           }
         </Table>
         <></>
