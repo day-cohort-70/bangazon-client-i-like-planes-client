@@ -27,7 +27,6 @@ export default function Cart() {
 
   useEffect(() => {
     refresh()
-    debugger
     getPaymentTypes(profile.id).then(paymentData => {
       if (paymentData) {
         setPaymentTypes(paymentData)
