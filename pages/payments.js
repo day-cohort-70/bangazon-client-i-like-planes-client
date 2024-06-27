@@ -13,6 +13,7 @@ export default function Payments() {
   const [payments, setPayments] = useState([])
   const [showModal, setShowModal] = useState(false)
   const {profile} = useAppContext()
+
   const refresh = () => getPaymentTypes(profile.id).then((data) => {
     if (data) {
       setPayments(data)
@@ -20,7 +21,8 @@ export default function Payments() {
   })
 
   useEffect(() => {
-    refresh()
+    if (profile.id){
+    refresh()}
   }, [profile])
 
   const addNewPayment = (payment) => {
