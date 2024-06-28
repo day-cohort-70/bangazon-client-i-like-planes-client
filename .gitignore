@@ -34,4 +34,4 @@ yarn-error.log*
 .vercel
 
 # Ignore .vscode settings
-/.vscode/settings.json
+.vscode/settings.json
