@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { ProductCard } from '../product/card.js'
 
 export function StoreCard({ store, width= "is-half" }) {
   return (
@@ -11,11 +12,19 @@ export function StoreCard({ store, width= "is-half" }) {
         </header>
         <div className="card-content">
           <p className="content">
-            Owner: {store.seller.first_name} {store.seller.last_name}
+            Owner: {store.seller?.user?.first_name} {store.seller?.user?.last_name}
           </p>
           <div className="content">
             {store.description}
           </div>
+          <div className="content">
+            Product Count: {store.product_count}
+          </div>
+          <div className="columns is-multiline">
+        {store.products.map(product => (
+          <ProductCard product={product} key={product.id} />
+        ))}
+      </div>
         </div>
         <footer className="card-footer">
           <Link href={`stores/${store.id}`}>
