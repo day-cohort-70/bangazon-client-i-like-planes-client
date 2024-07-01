@@ -43,7 +43,7 @@ export default function Cart() {
   const deleteCurrentOrder = () => {
     deleteOrder(cart.id).then(() => {
       setShowConfirmDelete(false)
-    })
+    }).then(refresh)
   } 
 
   const removeProduct = (productId) => {
