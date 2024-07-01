@@ -27,3 +27,12 @@ export function completeCurrentOrder(orderId, payment_type) {
     body: JSON.stringify({payment_type})
   })
 }
+
+export const deleteOrder = (cartId) => {
+  return fetchWithResponse(`orders/${cartId}`,{
+    method:'DELETE',
+    headers: {
+      Authorization: `Token ${localStorage.getItem('token')}`
+    }
+  })
+}
