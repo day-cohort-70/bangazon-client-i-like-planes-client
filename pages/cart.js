@@ -47,7 +47,6 @@ export default function Cart() {
   } 
 
   const removeProduct = (productId) => {
-    debugger
     removeProductFromOrder(productId).then(refresh)
   }
 
