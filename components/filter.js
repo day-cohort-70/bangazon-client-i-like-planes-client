@@ -127,7 +127,7 @@ export default function Filter({ productCount, onSearch, locations }) {
                     options={locations}
                     title="Filter by Location"
                     addlClass="is-fullwidth"
-                    // Todo: ticket:#15
+                  
                   />
                 </div>
                 <hr className="dropdown-divider"></hr>
