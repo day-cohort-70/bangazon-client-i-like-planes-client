@@ -15,8 +15,13 @@ export default function Filter({ productCount, onSearch, locations }) {
 
   const [showFilters, setShowFilters] = useState(false)
   const [query, setQuery] = useState('')
-  const [categories, setCategories] = useState([{id: 1, name: 'Apples'}, {id: 2, name: 'Oranges'}, {id: 3, name: 'Lemons'}])
+  const [categories, setCategories] = useState([])
   const [direction, setDirection] = useState('asc')
+
+  useEffect(() => {
+    getCategories().then((data) => { setCategories(data) })
+  }, [])
+
   const clear = () => {
     for (let ref in refEls) {
       if (ref === 'direction') {
@@ -122,6 +127,7 @@ export default function Filter({ productCount, onSearch, locations }) {
                     options={locations}
                     title="Filter by Location"
                     addlClass="is-fullwidth"
+                  
                   />
                 </div>
                 <hr className="dropdown-divider"></hr>
