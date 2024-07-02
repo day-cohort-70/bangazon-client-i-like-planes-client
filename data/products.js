@@ -22,6 +22,10 @@ export function getCategories() {
   })
 }
 
+export function getCategoriesWithRecentProducts() {
+  return fetchWithoutResponse('')
+}
+
 export function getProductById(id) {
   return fetchWithResponse(`products/${id}`, {
     headers: {
