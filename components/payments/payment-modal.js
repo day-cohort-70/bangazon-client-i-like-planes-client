@@ -6,6 +6,18 @@ export default function AddPaymentModal({ showModal, setShowModal, addNewPayment
   const merchantNameInput = useRef()
   const acctNumInput = useRef()
   const expirationDateInput = useRef()
+
+  const handleAddNewPayment = () => {
+    addNewPayment({
+      account_number: acctNumInput.current.value,
+      merchant_name: merchantNameInput.current.value,
+      expiration_date: expirationDateInput.current.value
+    })
+    merchantNameInput.current.value = ''
+    acctNumInput.current.value = ''
+    expirationDateInput.current.value = ''
+  }
+
   return (
     <Modal showModal={showModal} setShowModal={setShowModal} title="Add New Payment Method">
       <>
@@ -31,13 +43,15 @@ export default function AddPaymentModal({ showModal, setShowModal, addNewPayment
       <>
         <button
           className="button is-success"
-          onClick={() => addNewPayment({
-            account_number: acctNumInput.current.value,
-            merchant_name: merchantNameInput.current.value,
-            expiration_date: expirationDateInput.current.value
-          })}
+          onClick={handleAddNewPayment}
         >Add Payment Method</button>
-        <button className="button" onClick={() => setShowModal(false)}>Cancel</button>
+        <button 
+          className="button" 
+          onClick={() => {
+            setShowModal(false)
+
+          }}
+        >Cancel</button>
       </>
     </Modal>
   )
