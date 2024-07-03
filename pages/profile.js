@@ -24,7 +24,9 @@ export default function Profile() {
         <div className="columns is-multiline">
           {
             profile.favorites?.map(favorite => (
-              <StoreCard store={favorite} key={favorite.id} width="is-one-third" />
+              <div className='' key={favorite.id}>
+                <div className='title'>{favorite.store.name}</div> <div className='subtitle mb-3 pl-3'> {favorite.store.description}</div>
+              </div>
             ))
           }
         </div>
