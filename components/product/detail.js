@@ -18,7 +18,8 @@ export function Detail({ product, like, unlike }) {
   }
 
   const recommendProductEvent = () => {
-    recommendProduct(product.id, usernameEl.current.value).then((res) => {
+    const username = usernameEl.current.value.toLowerCase()
+    recommendProduct(product.id, username).then((res) => {
       if (res) {
         setShowError(true)
       } else {
