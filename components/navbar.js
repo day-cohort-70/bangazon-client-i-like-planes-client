@@ -76,7 +76,7 @@ export default function Navbar() {
 
   return (
 
-    <nav className="navbar mb-3 is-white px-5 is-fixed-top is-top" role="navigation" aria-label="main navigation"style={{backgroundImage: `url(https://t3.ftcdn.net/jpg/00/22/35/86/360_F_22358642_TlOPo0uu0tAb22YINFwY1UDKxFON8TFR.jpg)`}}>
+    <nav className="navbar mb-3 is-warning px-5 is-fixed-top is-top" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
 
           <Link href="/">
@@ -93,8 +93,8 @@ export default function Navbar() {
 
       <div className="navbar-menu" ref={navbar}>
         <div className="navbar-start">
-          <Link href="/products"><a className="navbar-item has-text-danger has-text-weight-bold">Products</a></Link>
-          <Link href="/stores"><a className="navbar-item has-text-danger has-text-weight-bold">Stores</a></Link>
+          <Link href="/products"><a className="navbar-item">Products</a></Link>
+          <Link href="/stores"><a className="navbar-item">Stores</a></Link>
         </div>
         <div className="navbar-end">
           {
