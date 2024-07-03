@@ -70,6 +70,8 @@ export default function StoreDetail() {
             <></>
         }
       </div>
+      {isOwner ?
+      <>
       <h1 className='title'> Sold: </h1>
       <div className="columns is-multiline">
         {
@@ -89,6 +91,7 @@ export default function StoreDetail() {
             <></>
         }
       </div>
+      </>: <></>}
     </>
   )
 }
