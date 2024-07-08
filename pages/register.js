@@ -32,8 +32,8 @@ export default function Register() {
       address: address.current.value
     }
 
+    debugger
     register(user).then((res) => {
-      debugger
       if (res.token) {
         setToken(res.token)
         router.push('/')
