@@ -1,5 +1,5 @@
 import { useRouter } from "next/router"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { addProductToOrder, recommendProduct } from "../../data/products"
 import Modal from "../modal"
 import { Input } from "../form-elements"
@@ -9,12 +9,25 @@ export function Detail({ product, like, unlike }) {
   const usernameEl = useRef()
   const [showModal, setShowModal] = useState(false)
   const [showError, setShowError] = useState(false)
+  const [addToCartDis, setAddToCartDis] = useState(false)
+
+
+  useEffect(() => {
+    if (product.quantity <=0){
+      setAddToCartDis(true)
+    }
+  }, []);
+
 
 
   const addToCart = () => {
+    if (product.quantity <= 0){
+      alert("Out Of Stock")
+    } else{
     addProductToOrder(product.id).then(() => {
       router.push('/cart')
     })
+  }
   }
 
   const recommendProductEvent = () => {
@@ -61,7 +74,7 @@ export function Detail({ product, like, unlike }) {
           <article className="tile is-child is-align-self-center">
             <div className="field is-grouped">
               <p className="control">
-                <button className="button is-primary" onClick={addToCart}>Add to Cart</button>
+                <button className="button is-primary" disabled={addToCartDis} onClick={addToCart}>Add to Cart</button>
               </p>
               <p className="control">
                 <button
