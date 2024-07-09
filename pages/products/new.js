@@ -13,8 +13,8 @@ export default function NewProduct() {
     const product = {
       name: name.value,
       description: description.value,
-      price: price.value,
-      categoryId: category.value,
+      price: parseFloat(price.value),
+      category_id: parseInt(category.value),
       location: location.value,
       quantity: quantity.value
     }
