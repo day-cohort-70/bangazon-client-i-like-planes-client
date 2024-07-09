@@ -17,7 +17,7 @@ export function AppWrapper({ children }) {
     const authRoutes = ['/login', '/register']
     if (token) {
       localStorage.setItem('token', token)
-      if (!authRoutes.includes(router.pathname)) {
+      if (authRoutes.includes(router.pathname)) {
         getUserProfile().then((profileData) => {
           if (profileData) {
             setProfile(profileData)
