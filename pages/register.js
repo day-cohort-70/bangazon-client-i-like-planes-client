@@ -14,6 +14,9 @@ export default function Register() {
   const lastName = useRef('')
   const username = useRef('')
   const password = useRef('')
+  const email = useRef('')
+  const phone_number = useRef('')
+  const address = useRef('')
   const router = useRouter()
 
   const submit = (e) => {
@@ -23,7 +26,10 @@ export default function Register() {
       username: username.current.value,
       password: password.current.value,
       first_name: firstName.current.value,
-      last_name: lastName.current.value
+      last_name: lastName.current.value,
+      email: email.current.value,
+      phone_number: phone_number.current.value,
+      address: address.current.value
     }
 
     register(user).then((res) => {
@@ -59,10 +65,28 @@ export default function Register() {
             label="Username"
           />
           <Input
+            id="email"
+            refEl={email}
+            type="email"
+            label="Email"
+          />
+          <Input
             id="password"
             refEl={password}
             type="password"
             label="Password"
+          />
+          <Input
+            id="phone_number"
+            refEl={phone_number}
+            type="tel"
+            label="Phone Number"
+          />
+          <Input
+            id="address"
+            refEl={address}
+            type="text"
+            label="Address"
           />
 
           <div className="field is-grouped">
