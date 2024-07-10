@@ -22,6 +22,14 @@ export function getCategories() {
   })
 }
 
+export function getCategoriesWithTopFiveProducts() {
+  return fetchWithResponse('productcategories/recentproducts', {
+    headers: {
+      Authorization: `Token ${localStorage.getItem('token')}`
+    }
+  })
+}
+
 export function getProductById(id) {
   return fetchWithResponse(`products/${id}`, {
     headers: {
